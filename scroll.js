@@ -1,10 +1,14 @@
 const boxes = document.querySelectorAll(".scroll-in");
 
-const callback = (entries, observer) => {
+const callback = (entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("displayed");
-      observer.unobserve(entry.target);
+
+      setTimeout(() => {
+        entry.target.classList.add("hide");
+        entry.target.classList.remove("displayed");
+      }, 1500);
     }
   });
 };
